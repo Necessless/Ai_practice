@@ -1,0 +1,12 @@
+{
+    "input_size": 784,
+    "num_classes": 10,
+    "layers": [
+        {"type": "linear", "size": 256},
+        {"type": "relu"},
+        {"type": "dropout", "rate": 0.3},
+        {"type": "linear", "size": 64},
+        {"type": "relu"},
+        {"type": "dropout", "rate": 0.3}
+    ]
+} 

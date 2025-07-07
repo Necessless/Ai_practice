@@ -4,13 +4,22 @@ RandomCrop с возвращаемым размером 200х200 и паддин
 ColorJitter с яркостью 0.5, контрастом 0.4, насыщенностью 0.5 и экспозицией 0.3,
 RandomRotation [-15,15] градусов, 
 RandomGrayScale с вероятностью 100%.
-
+![](results/task_1/combined_aug_Сайтама.png)
+![](results/task_1/combined_aug_Генос.png)
+![](results/task_1/combined_aug_Гароу.png)
+![](results/task_1/combined_aug_Соник.png)
+![](results/task_1/combined_aug_Татсумаки.png)
 №2:
 RandomGaussianBlur - аугментация, которая блюрит рандомную часть изображения по гауссу;
 RandomPixelBlur - с вероятностью в 0.5 удаляет пиксель (обнуляет);
 RandomInvert - инвертирует изображение.
 
 Добавил к выводу, то бишь к сравнению Posterize, Autocontrast, RandomErase из extra_augs.py. Из общей картины мои аугментации не выбиваются.
+![](results/task_2/combined_diff_Генос.png)
+![](results/task_2/combined_diff_Гароу.png)
+![](results/task_2/combined_diff_Сайтама.png)
+![](results/task_2/combined_diff_Соник.png)
+![](results/task_2/combined_diff_Татсумаки.png)
 
 №3:
 
@@ -26,17 +35,21 @@ RandomInvert - инвертирует изображение.
 Средний размер изображения во всех классах: 58867.5
 
 Основная масса изображений имеет размер от 25000 байт до 95000 байт, то бишь от ~25 Кб до ~95 Кб. Также есть выбросы в 175 Кб.
-
+![](results/task_3/class_distrib.png)
+![](results/task_3/sizes_histogramm.png)
 
 №4:
 В light конфигурацию включил аугментации, которые существенно не влияют на размер тензора и в целом на его содержимое:
 различные повороты: RandomHorizontal\Vertical, Rotation.
+![](results/task_4/light_augmentation_batch.png)
 
 В medium добавил размытие GaussianBlur, RandomErasing, CutOut, грубо говоря, аугментации, которые существенно влияют на тензор.
+![](results/task_4/medium_augmentation_batch.png)
 
 В heavy сделал всё вместе: размытие, вырезы, обрезы, постеризацию, шум, контраст (GaussianBlur, Cutout, RandomErasing, Posterize, AutoContrast).
 Во всех аугментациях поставил вероятность 0.5, чтобы можно было разглядеть начальную картинку. 
-Сделал визуализацию через метод show_images из utils и сохранил её в results/task_4.
+![](results/task_4/heavy_augmentation_batch.png)
+
 
 №5:
 Взял следующую аугментацию:
@@ -45,6 +58,7 @@ RandomHorizontalFlip, RandomGrayscale, ColorJitter, CutOut.
 Самые эффективные размеры, на мой взгляд - 128х128 либо 256х256, при них не такие больше затраты ресурсов.
 ВЫВОД:
 Ожидаемо, от увеличения размерности таргетного изображения, растет и память с временем исполнения.
+![](results/task_5/comparison_graphs.png)
 
 №6:
 Я взял модель efficientnet_b0. 
@@ -54,3 +68,5 @@ Epoch 2/5 - Train loss: 0.3816044181585312, acc: 0.9888888888888889 - Val loss: 
 Epoch 3/5 - Train loss: 0.07787051796913147, acc: 0.9944444444444445 - Val loss: 0.36731218232920293, acc: 0.89
 Epoch 4/5 - Train loss: 0.016577976134916145, acc: 1.0 - Val loss: 0.33511582477704477, acc: 0.905
 Epoch 5/5 - Train loss: 0.07417682240096231, acc: 0.9833333333333333 - Val loss: 0.3900520753997721, acc: 0.895
+![](results/task_6/train_loss_accuracy_model.png)
+![](results/task_6/val_loss_accuracy_model.png)
